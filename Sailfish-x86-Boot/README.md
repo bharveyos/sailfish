@@ -1,0 +1,2 @@
+### Requirements
+- uefi firmware
