@@ -1,0 +1,23 @@
+BasedOnStyle: LLVM
+
+# General formatting
+IndentWidth: 4
+UseTab: Always
+TabWidth: 4  # Important to define this when using tabs
+ColumnLimit: 120
+
+
+# Pointer formatting
+DerivePointerAlignment: false
+PointerAlignment: Right
+
+# Function declaration layout
+BreakBeforeBraces: Allman
+
+AlignConsecutiveDeclarations: true
+
+# Control indentation for nested blocks
+IndentCaseLabels: true          # Indents `case` labels inside switch (if relevant)
+IndentGotoLabels: false         # Optional, default is false
+AllowShortBlocksOnASingleLine: false  # Avoid single-line if/for blocks
+AllowShortIfStatementsOnASingleLine: Never  # Forces braces/newline even on short ifs

@@ -3,19 +3,19 @@ ASM = as
 LD = ld
 
 BIN_DIR := ../bin
-BIN_KERN_DIR := ../bin/kernel
-BIN_BOOT_DIR := ../bin/bootloader
-OBJ_DIR := ../obj
-IMG_DIR := ../img
+BIN_KERN_DIR := ../Sailfish-Kernel/bin/kernel
+BIN_BOOT_DIR := ../Sailfish-Kernel/bin/bootloader
+OBJ_DIR := ../Sailfish-Kernel/obj
+IMG_DIR := ../Sailfish-Kernel/img
 SRC_DIR := ../src
 HOME = /home/bnh
 UEFI_DIR = $(HOME)/git/gnu-efi/inc
-MOD_DIR := ./modules
+INCLUDE_DIR := ./include
 
 UEFI := uefi
-MODS := modules
+HEADERS := headers
 
-C_FLAGS := -I$(UEFI_DIR) -I$(MOD_DIR) -fpic -ffreestanding -fno-stack-protector \
+C_FLAGS := -I$(UEFI_DIR) -I$(INCLUDE_DIR) -fpic -ffreestanding -fno-stack-protector \
 		 -fno-stack-check -fshort-wchar -mno-red-zone -maccumulate-outgoing-args -c -ggdb -o
 LD_FLAGS := -T$(HOME)/git/gnu-efi/gnuefi/elf_x86_64_efi.lds -shared -Bsymbolic -L$(HOME)/git/gnu-efi/x86_64/lib \
 		 -L$(HOME)/git/gnu-efi/x86_64/gnuefi -o
