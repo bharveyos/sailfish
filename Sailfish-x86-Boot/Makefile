@@ -2,21 +2,21 @@ CC = gcc
 ASM = as
 LD = ld
 
-BIN_DIR := ../bin
+BIN_DIR := ../Sailfish-Kernel/bin
 BIN_KERN_DIR := ../Sailfish-Kernel/bin/kernel
 BIN_BOOT_DIR := ../Sailfish-Kernel/bin/bootloader
 OBJ_DIR := ../Sailfish-Kernel/obj
 IMG_DIR := ../Sailfish-Kernel/img
-SRC_DIR := ../src
+SRC_DIR := ./src
 HOME = /home/bnh
 UEFI_DIR = $(HOME)/git/gnu-efi/inc
 INCLUDE_DIR := ./include
 
-UEFI := uefi
+UEFI := src
 HEADERS := headers
 
 C_FLAGS := -I$(UEFI_DIR) -I$(INCLUDE_DIR) -fpic -ffreestanding -fno-stack-protector \
-		 -fno-stack-check -fshort-wchar -mno-red-zone -maccumulate-outgoing-args -c -ggdb -o
+		 -fno-stack-check -fshort-wchar -Wall -Werror -mno-red-zone -maccumulate-outgoing-args -c -ggdb -o
 LD_FLAGS := -T$(HOME)/git/gnu-efi/gnuefi/elf_x86_64_efi.lds -shared -Bsymbolic -L$(HOME)/git/gnu-efi/x86_64/lib \
 		 -L$(HOME)/git/gnu-efi/x86_64/gnuefi -o
 EFI_FLAGS := -j .text -j .sdata -j .data -j .rodata -j .dynamic -j .dynsym  -j .rel -j .rela -j .rel.* -j .rela.* \
@@ -26,7 +26,7 @@ DEBUG_SECTIONS := .debug_info .debug_abbrev .debug_loc .debug_aranges \
 	.debug_line .debug_macinfo .debug_str
 SECTIONS := .text .sdata .data .dynamic .dynsym .rel .rela .reloc
 
-SOURCES := main.c
+SOURCES := file.c main.c mmap.c device.c framebuffer.c acpi.c serial.c elf.c
 
 boot-image: main-efi debug-efi
 	dd if=/dev/zero of=$(IMG_DIR)/boot.img bs=512 count=93750

@@ -3,7 +3,7 @@
 EFI_STATUS read_file(EFI_HANDLE image, CHAR16 *kernelConfigFileName)
 {
 	EFI_FILE_HANDLE fileHandle;
-	DEBUG_PRINT(L"Searching for file...\n");
+	Print(L"Searching for file...\n");
 	EFI_FILE_HANDLE rootVolume = open_volume(image);
 
 	EFI_STATUS status =

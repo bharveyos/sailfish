@@ -1,7 +1,6 @@
 #ifndef FILE_H
 #define FILE_H
 
-#include "logger.h"
 #include <efi.h>
 #include <efilib.h>
 #include <elf.h>

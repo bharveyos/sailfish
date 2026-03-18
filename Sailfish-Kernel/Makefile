@@ -9,7 +9,7 @@ BIN_BOOT_DIR = bin/bootloader
 OBJ_DIR = obj
 IMG_DIR = img
 SRC_DIR = src
-INC_DIR = ./src/include
+INC_DIR = ./include
 
 C_FLAGS := -I$(INC_DIR) -ffreestanding -Wall -Wextra \
          -mno-red-zone -fno-stack-protector -fno-pic \
