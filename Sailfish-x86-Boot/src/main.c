@@ -23,8 +23,8 @@ efi_main(EFI_HANDLE imageHandle, EFI_SYSTEM_TABLE *systemTable)
 	KERNEL_SETTINGS *kernelSettings = AllocatePool(sizeof(KERNEL_SETTINGS));
 
 	// File names
-	CHAR16 *name = L"EFI\\Baobab\\DEMO.txt";
-	CHAR16 *kernelName = L"EFI\\Baobab\\kernel.elf";
+	CHAR16 *name = L"EFI\\Sailfish\\DEMO.txt";
+	CHAR16 *kernelName = L"EFI\\Sailfish\\kernel.elf";
 
 	UINTN				 mmapKey = 0;
 	EFI_PHYSICAL_ADDRESS kernelEntryPoint;
