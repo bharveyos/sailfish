@@ -3,6 +3,7 @@
 
 #include <efi.h>
 #include <efilib.h>
+#include <stddef.h>
 
 VOID *get_acpi_table(void);
 

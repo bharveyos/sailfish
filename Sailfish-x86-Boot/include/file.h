@@ -4,6 +4,7 @@
 #include <efi.h>
 #include <efilib.h>
 #include <elf.h>
+#include <stddef.h>
 
 EFI_STATUS		read_file(EFI_HANDLE image, CHAR16 *kernel_config_file_name);
 EFI_FILE_HANDLE open_volume(EFI_HANDLE handle);

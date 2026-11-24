@@ -9,7 +9,7 @@ OBJ_DIR := ../Sailfish-Kernel/obj
 IMG_DIR := ../Sailfish-Kernel/img
 SRC_DIR := ./src
 HOME = /home/bnh
-UEFI_DIR = $(HOME)/git/gnu-efi/inc
+UEFI_DIR = /usr/include/efi
 INCLUDE_DIR := ./include
 
 UEFI := src

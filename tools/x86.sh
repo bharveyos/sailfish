@@ -6,5 +6,6 @@ qemu-system-x86_64 -bios /usr/share/ovmf/OVMF.fd \
   -drive file=third-drive.qcow2,format=qcow2,if=virtio \
   -netdev user,id=net0 \
   -device e1000,netdev=net0 \
+  -audio none \
   -m 4096M \
   -vnc :0

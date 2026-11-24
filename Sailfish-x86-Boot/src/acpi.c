@@ -1,5 +1,4 @@
-#include <efi.h>
-#include <efilib.h>
+#include <acpi.h>
 
 VOID *get_acpi_table()
 {

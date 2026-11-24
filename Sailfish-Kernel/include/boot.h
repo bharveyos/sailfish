@@ -4,12 +4,12 @@
 #include <stdint.h>
 
 /*
-	BAOBAB_EFI structs are kernel accesable data types from EFI without linking EFI objects to the kernel after
+	SAILFISH_EFI structs are kernel accesable data types from EFI without linking EFI objects to the kernel after
    compilation
 */
 
-typedef uint64_t BAOBAB_EFI_PHYSICAL_ADDRESS;
-typedef uint64_t BAOBAB_EFI_VIRTUAL_ADDRESS;
+typedef uint64_t SAILFISH_EFI_PHYSICAL_ADDRESS;
+typedef uint64_t SAILFISH_EFI_VIRTUAL_ADDRESS;
 
 typedef struct
 {
@@ -19,34 +19,34 @@ typedef struct
 
 typedef struct
 {
-	uint32_t					Type;
-	uint32_t					Pad;
-	BAOBAB_EFI_PHYSICAL_ADDRESS PhysicalStart;
-	BAOBAB_EFI_VIRTUAL_ADDRESS	VirtualStart;
-	uint64_t					NumberOfPages;
-	uint64_t					Attribute;
-} BAOBAB_EFI_MEMORY_DESCRIPTOR;
+	uint32_t					  Type;
+	uint32_t					  Pad;
+	SAILFISH_EFI_PHYSICAL_ADDRESS PhysicalStart;
+	SAILFISH_EFI_VIRTUAL_ADDRESS  VirtualStart;
+	uint64_t					  NumberOfPages;
+	uint64_t					  Attribute;
+} SAILFISH_EFI_MEMORY_DESCRIPTOR;
 
 typedef enum
 {
-	BB_EfiReservedMemoryType,
-	BB_EfiLoaderCode,
-	BB_EfiLoaderData,
-	BB_EfiBootServicesCode,
-	BB_EfiBootServicesData,
-	BB_EfiRuntimeServicesCode,
-	BB_EfiRuntimeServicesData,
-	BB_EfiConventionalMemory,
-	BB_EfiUnusableMemory,
-	BB_EfiACPIReclaimMemory,
-	BB_EfiACPIMemoryNVS,
-	BB_EfiMemoryMappedIO,
-	BB_EfiMemoryMappedIOPortSpace,
-	BB_EfiPalCode,
-	BB_EfiPersistentMemory,
-	BB_EfiUnacceptedMemoryType,
-	BB_EfiMaxMemoryType
-} BAOBAB_EFI_MEMORY_TYPE;
+	SF_EfiReservedMemoryType,
+	SF_EfiLoaderCode,
+	SF_EfiLoaderData,
+	SF_EfiBootServicesCode,
+	SF_EfiBootServicesData,
+	SF_EfiRuntimeServicesCode,
+	SF_EfiRuntimeServicesData,
+	SF_EfiConventionalMemory,
+	SF_EfiUnusableMemory,
+	SF_EfiACPIReclaimMemory,
+	SF_EfiACPIMemoryNVS,
+	SF_EfiMemoryMappedIO,
+	SF_EfiMemoryMappedIOPortSpace,
+	SF_EfiPalCode,
+	SF_EfiPersistentMemory,
+	SF_EfiUnacceptedMemoryType,
+	SF_EfiMaxMemoryType
+} SAILFISH_EFI_MEMORY_TYPE;
 
 typedef struct
 {
