@@ -80,6 +80,7 @@ efi_main(EFI_HANDLE imageHandle, EFI_SYSTEM_TABLE *systemTable)
 
 	typedef void (*kernel_entry_t)(KERNEL_SETTINGS *);
 	kernel_entry_t entry = (kernel_entry_t)kernelEntryPoint;
+	Print(L"Entering Kernel");
 	entry(kernelSettings);
 
 	Print(L"Kernel returned unexpectedly\n");

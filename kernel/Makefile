@@ -2,7 +2,7 @@ CC = gcc
 ASM = as
 LD = ld
 
-X86_BOOTLOADER_DIR = Sailfish-x86-Boot/
+X86_BOOTLOADER_DIR = bootloader/
 BIN_DIR = bin
 BIN_KERN_DIR = bin/kernel
 BIN_BOOT_DIR = bin/bootloader
@@ -32,7 +32,7 @@ kernel: config
 	$(LD) $(foreach src, $(SOURCES), $(OBJ_DIR)/$(notdir $(basename $(src))).o) $(LD_FLAGS) -T link.ld -o $(BIN_KERN_DIR)/kernel.elf
 
 kernel-debug: config
-	$(foreach src, $(wildcard $(SRC_DIR)/**/*.c), $(CC) $(src) $(C_FLAGS_DEBUG) $(OBJ_DIR)/$(notdir $(basename $(src))).o;)
+	$(foreach src, $(wildcard $(SRC_DIR)/*.c), $(CC) $(src) $(C_FLAGS_DEBUG) $(OBJ_DIR)/$(notdir $(basename $(src))).o;)
 	$(LD) $(foreach src, $(SOURCES), $(OBJ_DIR)/$(notdir $(basename $(src))).o) $(LD_FLAGS) -T link.ld -o $(BIN_KERN_DIR)/kernel.elf
 
 config:

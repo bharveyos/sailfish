@@ -2,11 +2,11 @@ CC = gcc
 ASM = as
 LD = ld
 
-BIN_DIR := ../Sailfish-Kernel/bin
-BIN_KERN_DIR := ../Sailfish-Kernel/bin/kernel
-BIN_BOOT_DIR := ../Sailfish-Kernel/bin/bootloader
-OBJ_DIR := ../Sailfish-Kernel/obj
-IMG_DIR := ../Sailfish-Kernel/img
+BIN_DIR := ../kernel/bin
+BIN_KERN_DIR := ../kernel/bin/kernel
+BIN_BOOT_DIR := ../kernel/bin/bootloader
+OBJ_DIR := ../kernel/obj
+IMG_DIR := ../kernel/img
 SRC_DIR := ./src
 HOME = /home/bnh
 UEFI_DIR = /usr/include/efi

@@ -13,5 +13,5 @@ break kernel_main
 layout next
 layout next
 set trace-commands on
-set logging on
+set logging enabled on
 continue
