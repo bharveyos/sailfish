@@ -11,7 +11,6 @@ EFI_STATUS
 EFIAPI
 efi_main(EFI_HANDLE imageHandle, EFI_SYSTEM_TABLE *systemTable)
 {
-	__asm__ volatile("pause");
 	InitializeLib(imageHandle, systemTable);
 
 	// UEFI Structs
@@ -52,16 +51,13 @@ efi_main(EFI_HANDLE imageHandle, EFI_SYSTEM_TABLE *systemTable)
 	{
 		print_framebuffer_info(graphicsOutput);
 	}
-	Print(L"Error in before acpi table settings\n");
 	acpi = get_acpi_table();
-	Print(L"Error in after acpi table settings\n");
 
 	if (kernelSettings == NULL)
 	{
 		return EFI_OUT_OF_RESOURCES;
 	}
 
-	Print(L"Kernel settings aren't full\n");
 	kernelSettings->fb_type = graphicsOutput->Mode->Info->PixelFormat;
 	kernelSettings->fb_addr = (UINT64)graphicsOutput->Mode->FrameBufferBase;
 	kernelSettings->fb_size = graphicsOutput->Mode->FrameBufferSize;
@@ -82,6 +78,8 @@ efi_main(EFI_HANDLE imageHandle, EFI_SYSTEM_TABLE *systemTable)
 	kernel_entry_t entry = (kernel_entry_t)kernelEntryPoint;
 	Print(L"Entering Kernel");
 	entry(kernelSettings);
+	Print(L"Kernel returned unexpectedly\n");
+
 	status = exit_boot_services(imageHandle, mmapKey);
 	if (EFI_ERROR(status))
 	{
@@ -89,6 +87,5 @@ efi_main(EFI_HANDLE imageHandle, EFI_SYSTEM_TABLE *systemTable)
 		return status;
 	}
 
-	Print(L"Kernel returned unexpectedly\n");
 	return EFI_LOAD_ERROR;
 }
