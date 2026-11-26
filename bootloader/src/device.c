@@ -44,12 +44,14 @@ VOID get_device_list(DeviceList **storageDevices)
 				deviceItem.Block.media_id = blockStorage->Media->MediaId;
 				deviceItem.Block.capacity =
 					((blockStorage->Media->LastBlock + 1) * blockStorage->Media->BlockSize) / 1024;
+				UINT64 block_capacity_mb = deviceItem.Block.capacity / 1024;
+				UINT64 block_capacity_gb = deviceItem.Block.capacity / 1024 / 1024;
 				deviceItem.Block.removable = blockStorage->Media->RemovableMedia;
 
 				(*storageDevices)->device_list[validDeviceCount] = deviceItem;
 				(*storageDevices)->count += 1;
-				Print(L"Found Block Device %u: %s (%d KiB)\n", validDeviceCount, DevicePathToStr(devicePath),
-					  deviceItem.Block.capacity);
+				Print(L"Found Block Device %u: %s (%d KiB) (%d MiB) (%d GiB)\n", validDeviceCount,
+					  DevicePathToStr(devicePath), deviceItem.Block.capacity, block_capacity_mb, block_capacity_gb);
 				validDeviceCount++;
 			}
 
