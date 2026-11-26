@@ -10,4 +10,6 @@ qemu-system-x86_64 -bios /usr/share/ovmf/OVMF.fd \
   -audio none \
   -device e1000,netdev=net0 \
   -m 4096M \
+  -chardev stdio,id=char0,logfile=serial.log,signal=on \
+  -serial chardev:char0 \
   -vnc :1
