@@ -49,6 +49,7 @@ EFI_STATUS get_mmap(EFI_MEMORY_DESCRIPTOR **memoryMap, KERNEL_SETTINGS *kernelSe
 	kernelSettings->mmap_size = memoryMapSize;
 	kernelSettings->mmap_desc_size = descriptorSize;
 
+	print_memory_info(kernelSettings, *memoryMap);
 	return EFI_SUCCESS;
 }
 
