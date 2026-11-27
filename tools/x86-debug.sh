@@ -12,4 +12,5 @@ qemu-system-x86_64 -bios /usr/share/ovmf/OVMF.fd \
   -m 4096M \
   -chardev stdio,id=char0,logfile=serial.log,signal=on \
   -serial chardev:char0 \
-  -vnc :1
+  -vnc :1 \
+  -d int,cpu_reset -D resets.log

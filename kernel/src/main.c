@@ -2,6 +2,8 @@
 #include "ascii.h"
 #include "boot.h"
 #include "debug.h"
+#include "gdt.h"
+#include "idt.h"
 #include "screen.h"
 #include "vga.h"
 #include <stdint.h>
@@ -18,6 +20,8 @@ int kernel_main(KERNEL_SETTINGS *settings)
 	height = settings->fb_height;
 	width = settings->fb_width;
 	clear_screen(fb, width, height, scanline, VGA_COLOR(FOREGROUND_BLACK, BACKGROUND_BLACK));
+	gdt_init();
+	idt_init();
 	kprint("We are printing from kernel\n");
 	kerror("AHHHH Panicccc!");
 	while (1)

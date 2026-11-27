@@ -9,7 +9,7 @@ set architecture i386:x86-64
 
 set disassembly-flavor intel
 set pagination off
-break kernel_main
+break gdt_init
 layout next
 layout next
 set trace-commands on

@@ -32,8 +32,10 @@ kernel: config
 	$(LD) $(foreach src, $(SOURCES), $(OBJ_DIR)/$(notdir $(basename $(src))).o) $(LD_FLAGS) -T link.ld -o $(BIN_KERN_DIR)/kernel.elf
 
 kernel-debug: config
+	nasm -f elf64 $(SRC_DIR)/gdt.asm -o $(OBJ_DIR)/gdt_asm.o
+	nasm -f elf64 $(SRC_DIR)/idt.asm -o $(OBJ_DIR)/idt_asm.o
 	$(foreach src, $(wildcard $(SRC_DIR)/*.c), $(CC) $(src) $(C_FLAGS_DEBUG) $(OBJ_DIR)/$(notdir $(basename $(src))).o;)
-	$(LD) $(foreach src, $(SOURCES), $(OBJ_DIR)/$(notdir $(basename $(src))).o) $(LD_FLAGS) -T link.ld -o $(BIN_KERN_DIR)/kernel.elf
+	$(LD) $(foreach src, $(SOURCES), $(OBJ_DIR)/$(notdir $(basename $(src))).o) $(OBJ_DIR)/gdt_asm.o $(OBJ_DIR)/idt_asm.o $(LD_FLAGS) -T link.ld -o $(BIN_KERN_DIR)/kernel.elf
 
 config:
 	mkdir -p bin/
